@@ -102,3 +102,92 @@ PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git cherry-pick 5a
  create mode 100644 test5.md
 PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> 
 ```
+# Part 2
+## Challenge 1
+```bash
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git checkout -b ft/new-feature 
+Switched to a new branch 'ft/new-feature'
+```
+## Challenge 2
+```bash
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git add feature.txt
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git commit -m 'Implemented core functionality for new feature'
+[ft/new-feature 5cab4e6] Implemented core functionality for new feature
+ 1 file changed, 1 insertion(+)
+```
+## Challenge 3
+```bash
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git checkout main
+Switched to branch 'main'
+Your branch is based on 'origin/main', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git add readme.txt 
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git commit -m 'Updated project readme'
+[main 1640bb6] Updated project readme
+ 1 file changed, 1 insertion(+)
+ create mode 100644 readme.txt
+```
+## Challenge 4
+```bash
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git push
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (13/13), 1.11 KiB | 188.00 KiB/s, done.
+Total 13 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (4/4), done.
+To https://github.com/christellealexia/Git-advanced.git
+ * [new branch]      main -> main
+```
+## Challenge 5
+```bash
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git merge ft/new-feature
+Merge made by the 'ort' strategy.
+ feature.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 feature.txt
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git branch -D ft/new feature
+error: branch 'ft/new' not found
+error: branch 'feature' not found
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git branch -D ft/new-feature 
+Deleted branch ft/new-feature (was 5cab4e6).
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced>
+```
+## Challenge 6
+```bash
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git log --oneline
+1b89294 (HEAD -> main) Merge branch 'ft/new-feature'
+4a708ef (origin/main) Changed my readme file
+1640bb6 Updated project readme
+5cab4e6 Implemented core functionality for new feature
+e682db3 Implemented test 5
+196e5b8 chore: Create third file
+0853d8e chore: Create initial file
+3e91478 chore: Create fourth file
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git checkout -b ft/new-branch-from-commit 1b89294                     
+M       readme.md
+Switched to a new branch 'ft/new-branch-from-commit'
+```
+## Challenge 7
+```bash
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git add commit.txt
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git commit -m 'New file added'
+[ft/new-branch-from-commit ff0ebbb] New file added
+ 1 file changed, 1 insertion(+)
+ create mode 100644 commit.txt
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git checkout ft/new-branch-from-commit
+M       readme.md
+Already on 'ft/new-branch-from-commit'
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git checkout main                     
+M       readme.md
+Switched to branch 'main'
+Your branch is ahead of 'origin/main' by 2 commits.
+  (use "git push" to publish your local commits)
+PS C:\Users\LENOVO\thegym-projects\Git-advanced\Git-advanced> git merge ft/new-branch-from-commit   
+Updating 1b89294..ff0ebbb
+Fast-forward
+ commit.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 commit.txt
+```
